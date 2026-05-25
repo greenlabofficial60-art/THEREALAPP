@@ -127,6 +127,8 @@ export const LANGS = [
 
 export const TabCtx = createContext({ tab: "home", setTab: () => {} });
 
+export const ACCENTS = ["#3b82f6", "#10b981", "#f59e0b", "#ef4444", "#8b5cf6", "#ec4899"];
+
 export const INCOME_SOURCES = [
   ["💵", "Salary"], ["🕐", "Hourly Job"], ["💻", "Freelance"], ["🚗", "Gig Work"],
 ];
