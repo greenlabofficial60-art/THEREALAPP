@@ -95,7 +95,7 @@ export function Sheet2({ title, sub, children, footer, scroll = true }) {
         <h1 className="text-3xl font-extrabold tracking-tight">{title}</h1>
         {sub && <p className="mt-1 text-slate-500">{sub}</p>}
         <div className={cx("mt-5 flex-1", scroll && "overflow-y-auto")}>{children}</div>
-        <div className="mt-4 flex gap-3">{footer}</div>
+        <div className="safe-bottom mt-4 flex gap-3">{footer}</div>
       </div>
     </div>
   );
@@ -280,7 +280,7 @@ export function DockBtn({ active, onClick, label, children }) {
 /* ===================== DOCK NAV ===================== */
 export function DockNav({ active, onSelect, onAdd }) {
   return (
-    <div className="absolute bottom-5 left-1/2 z-20 -translate-x-1/2 w-full max-w-[360px] px-4">
+    <div className="absolute bottom-0 left-0 right-0 z-20 px-4 pb-[max(20px,env(safe-area-inset-bottom))]">
       <div className="flex items-center justify-between rounded-full bg-white px-3 py-2 shadow-[0_8px_30px_rgba(0,0,0,0.12)] ring-1 ring-black/5">
         <DockBtn label="calendar" active={active === "home"} onClick={() => onSelect("home")}>
           <CalendarIcon />

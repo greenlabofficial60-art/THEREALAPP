@@ -17,7 +17,7 @@ export function Onboarding({ onDone }) {
       <h1 className="text-center text-3xl font-extrabold tracking-tight">{title}</h1>
       {sub && <p className="mt-2 text-center text-slate-500">{sub}</p>}
       <div className="mt-6 flex-1 overflow-y-auto">{children}</div>
-      <div className="sticky bottom-0 flex items-center justify-center gap-3 bg-white/80 py-4 backdrop-blur">{footer}</div>
+      <div className="safe-bottom sticky bottom-0 flex items-center justify-center gap-3 bg-white/80 py-4 backdrop-blur">{footer}</div>
     </div>
   );
 
