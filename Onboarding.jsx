@@ -20,7 +20,7 @@ export function Onboarding({ onDone }) {
       {footer && (
         <div
           className="absolute left-0 right-0 flex items-center justify-center gap-3 bg-white/90 px-6 py-4 backdrop-blur"
-          style={{ bottom: 0, paddingBottom: "max(16px, env(safe-area-inset-bottom))" }}
+          style={{ bottom: 0, paddingBottom: "max(40px, env(safe-area-inset-bottom))" }}
         >
           {footer}
         </div>

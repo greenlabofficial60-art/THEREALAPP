@@ -34,7 +34,7 @@ export function AccountSetup({ onDone }) {
 
   const screens = [
     <div key="w" className="absolute inset-0 flex flex-col justify-end bg-black/30">
-      <div className="m-4 rounded-[36px] bg-white p-8 text-center" style={{ paddingBottom: "max(32px, env(safe-area-inset-bottom))" }}>
+      <div className="m-4 rounded-[36px] bg-white p-8 text-center" style={{ paddingBottom: "max(56px, env(safe-area-inset-bottom))" }}>
         <div className="mx-auto mb-4 grid h-20 w-20 place-items-center rounded-full bg-slate-100 text-4xl">🚀</div>
         <h1 className="text-3xl font-extrabold">Welcome to CashCycle</h1>
         <p className="mt-2 text-slate-500">Set up your finances in just a few minutes.</p>
