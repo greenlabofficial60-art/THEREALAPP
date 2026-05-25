@@ -1,1 +1,28 @@
-if(!self.define){let e,i={};const n=(n,s)=>(n=new URL(n+".js",s).href,i[n]||new Promise(i=>{if("document"in self){const e=document.createElement("script");e.src=n,e.onload=i,document.head.appendChild(e)}else e=n,importScripts(n),i()}).then(()=>{let e=i[n];if(!e)throw new Error(`Module ${n} didn’t register its module`);return e}));self.define=(s,t)=>{const r=e||("document"in self?document.currentScript.src:"")||location.href;if(i[r])return;let o={};const c=e=>n(e,r),l={module:{uri:r},exports:o,require:c};i[r]=Promise.all(s.map(e=>l[e]||c(e))).then(e=>(t(...e),o))}}define(["./workbox-9c191d2f"],function(e){"use strict";self.skipWaiting(),e.clientsClaim(),e.precacheAndRoute([{url:"registerSW.js",revision:"402b66900e731ca748771b6fc5e7a068"},{url:"index.html",revision:"f2f5e0c3946703b935ccf85a83b17c4e"},{url:"assets/index-DgoyKcI8.js",revision:null},{url:"manifest.webmanifest",revision:"a52be28328af98098e0a8b89bedf7055"}],{}),e.cleanupOutdatedCaches(),e.registerRoute(new e.NavigationRoute(e.createHandlerBoundToURL("index.html")))});
+// Minimal offline cache. Caches the app shell on install and serves
+// cached responses when offline, falling back to the network.
+const CACHE = "cash-cycle-v1";
+
+self.addEventListener("install", (e) => {
+  self.skipWaiting();
+  e.waitUntil(caches.open(CACHE).then((c) => c.addAll(["./", "./index.html"])).catch(() => {}));
+});
+
+self.addEventListener("activate", (e) => {
+  e.waitUntil(
+    caches.keys().then((keys) => Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k))))
+  );
+  self.clients.claim();
+});
+
+self.addEventListener("fetch", (e) => {
+  if (e.request.method !== "GET") return;
+  e.respondWith(
+    fetch(e.request)
+      .then((res) => {
+        const copy = res.clone();
+        caches.open(CACHE).then((c) => c.put(e.request, copy)).catch(() => {});
+        return res;
+      })
+      .catch(() => caches.match(e.request).then((r) => r || caches.match("./index.html")))
+  );
+});
