@@ -36,7 +36,7 @@ export function ForecastContainer() {
 
   return (
     <div className={cx(
-      "relative h-[860px] w-[400px] overflow-hidden rounded-[44px] border-8 border-slate-900 shadow-2xl transition-colors",
+      "relative w-full h-screen overflow-hidden transition-colors",
       dark ? "bg-slate-900 text-slate-100" : "bg-white"
     )}>
       {!booted ? (
