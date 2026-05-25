@@ -12,12 +12,19 @@ export function Onboarding({ onDone }) {
   const next = () => setStep((s) => s + 1);
 
   const Card = ({ icon, title, sub, children, footer }) => (
-    <div className="flex flex-1 flex-col px-6 pt-6">
+    <div className="relative flex flex-1 flex-col px-6 pt-6" style={{ paddingBottom: footer ? "calc(80px + env(safe-area-inset-bottom))" : "env(safe-area-inset-bottom)" }}>
       {icon && <div className="mx-auto mb-3 grid h-16 w-16 place-items-center rounded-full bg-slate-100 text-3xl">{icon}</div>}
       <h1 className="text-center text-3xl font-extrabold tracking-tight">{title}</h1>
       {sub && <p className="mt-2 text-center text-slate-500">{sub}</p>}
-      <div className="mt-6 flex-1 overflow-y-auto">{children}</div>
-      <div className="safe-bottom sticky bottom-0 flex items-center justify-center gap-3 bg-white/80 py-4 backdrop-blur">{footer}</div>
+      <div className="mt-6 flex-1 overflow-y-auto pb-4">{children}</div>
+      {footer && (
+        <div
+          className="absolute left-0 right-0 flex items-center justify-center gap-3 bg-white/90 px-6 py-4 backdrop-blur"
+          style={{ bottom: 0, paddingBottom: "max(16px, env(safe-area-inset-bottom))" }}
+        >
+          {footer}
+        </div>
+      )}
     </div>
   );
 
