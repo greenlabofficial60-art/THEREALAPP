@@ -1,27 +1,8 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import { VitePWA } from "vite-plugin-pwa";
 
+// base: "./" makes the build work from any path, including GitHub Pages
 export default defineConfig({
+  plugins: [react()],
   base: "./",
-  plugins: [
-    react(),
-    VitePWA({
-      registerType: "autoUpdate",
-      manifest: {
-        name: "CashCycle",
-        short_name: "CashCycle",
-        description: "Your personal finance forecast",
-        theme_color: "#2ecc5f",
-        background_color: "#ffffff",
-        display: "standalone",
-        orientation: "portrait",
-        start_url: "/THEREALAPP/",
-        icons: [
-          { src: "/icon-192.png", sizes: "192x192", type: "image/png" },
-          { src: "/icon-512.png", sizes: "512x512", type: "image/png" },
-        ],
-      },
-    }),
-  ],
 });

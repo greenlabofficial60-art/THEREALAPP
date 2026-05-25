@@ -2,24 +2,19 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no" />
+    <title>Cash Cycle</title>
+    <meta name="theme-color" content="#000000" />
+    <!-- iOS: lets "Add to Home Screen" launch full-screen like a real app -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta name="apple-mobile-web-app-title" content="CashCycle" />
-    <meta name="theme-color" content="#2ecc5f" />
-    <link rel="apple-touch-icon" href="/icon-192.png" />
-    <title>CashCycle</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Cash Cycle" />
+    <link rel="apple-touch-icon" href="./icon-180.png" />
+    <link rel="manifest" href="./manifest.webmanifest" />
   </head>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; width: 100%; height: 100%; }
-    #root { width: 100%; height: 100dvh; overflow: hidden; }
-    .safe-bottom { padding-bottom: max(16px, env(safe-area-inset-bottom)); }
-    .safe-top { padding-top: max(12px, env(safe-area-inset-top)); }
-  </style>
   <body>
     <div id="root"></div>
-    <script type="module" src="/main.jsx"></script>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
